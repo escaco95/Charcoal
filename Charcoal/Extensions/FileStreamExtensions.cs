@@ -30,7 +30,7 @@ namespace Charcoal.Extensions
         /// <see cref="String"/>을 파일 스트림에 씁니다
         /// </summary>
         /// <param name="value">스트림에 쓸 <see cref="String"/> 값입니다.</param>
-        /// <param name="encoding">스트림의 쓸 <see cref="String"/> 의 인코딩 방식을 결정합니다.</param>
+        /// <param name="encoding">스트림에 쓸 <see cref="String"/> 의 인코딩 방식을 결정합니다.</param>
         /// <exception cref="System.Text.EncoderFallbackException"/>
         /// <exception cref="OverflowException"/>
         /// <exception cref="ArgumentNullException"/>
