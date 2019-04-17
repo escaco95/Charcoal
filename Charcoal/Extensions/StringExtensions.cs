@@ -30,6 +30,14 @@ namespace Charcoal.Extensions
         /// <param name="extension">앞에 마침표가 있거나 없는 새 확장명입니다. 문자열에서 기존 확장명을 제거하려면 null을(를) 지정하세요.</param>
         /// <exception cref="ArgumentException"/>
         public static String ChangeExtension(this String str, String extension) { return Path.ChangeExtension(str, extension); }
+        /// <summary>
+        /// 문자열 경로에 지정된 파일이 있는지를 확인합니다.
+        /// </summary>
+        public static Boolean FileExists(this String str) { return File.Exists(str); }
+        /// <summary>
+        /// 문자열 경로가 디스크에 있는 기존 디렉터리를 참조하는지를 확인합니다.
+        /// </summary>
+        public static Boolean DirectoryExists(this String str) { return Directory.Exists(str); }
     }
     #endregion
 
