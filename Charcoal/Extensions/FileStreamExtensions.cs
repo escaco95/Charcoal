@@ -27,6 +27,22 @@ namespace Charcoal.Extensions
             fs.Write(bytes, 0, 4);
         }
         /// <summary>
+        /// 스트림에서 <see cref="Int32"/>를 읽어서 해당 데이터를 반환합니다
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="NotSupportedException"/>
+        public static Int32 ReadInt32(this FileStream fs)
+        {
+            byte[] bytes = new byte[4];
+            if (fs.Read(bytes, 0, 4) < 4)
+                throw new IOException("파일의 끝을 초과했습니다");
+            return (int)bytes[0] + ((int)bytes[1] << 8) + ((int)bytes[2] << 16) + ((int)bytes[3] << 24);
+        }
+        /// <summary>
         /// <see cref="String"/>을 파일 스트림에 씁니다
         /// </summary>
         /// <param name="value">스트림에 쓸 <see cref="String"/> 값입니다.</param>

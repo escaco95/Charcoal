@@ -18,5 +18,9 @@ namespace Charcoal.Extensions
             };
             return bytes;
         }
+        /// <summary>
+        /// 이 인스턴스의 숫자 값을 해당하는 논리값으로 변환합니다.
+        /// </summary>
+        public static Boolean ToBoolean(this Int32 value) { return (value != 0); }
     }
 }
