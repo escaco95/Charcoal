@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTaskedProgram", "MyTaskedProgram\MyTaskedProgram.csproj", "{0F07D9DC-4CFE-4939-9F69-07C82FAED991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsageExamples", "MyTaskedProgram\UsageExamples.csproj", "{0F07D9DC-4CFE-4939-9F69-07C82FAED991}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charcoal", "Charcoal\Charcoal.csproj", "{AA901384-2572-464E-9320-671847D56DA8}"
 EndProject

@@ -7,7 +7,7 @@
     <ProjectGuid>{0F07D9DC-4CFE-4939-9F69-07C82FAED991}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MyTaskedProgram</RootNamespace>
-    <AssemblyName>MyTaskedProgram</AssemblyName>
+    <AssemblyName>UsageExamples</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
