@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Charcoal.Extensions
 {
@@ -15,10 +11,10 @@ namespace Charcoal.Extensions
         {
             byte[] bytes = new byte[4]
             {
-                (byte)(value >> 24),
-                (byte)(value >> 16),
+                (byte)value,
                 (byte)(value >> 8),
-                (byte)value
+                (byte)(value >> 16),
+                (byte)(value >> 24)
             };
             return bytes;
         }
