@@ -39,6 +39,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\FileStreamExtensions.cs" />
+    <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Task\ControlTask.cs" />
     <Compile Include="Task\Task.cs" />
     <Compile Include="Task\TaskManager.cs" />
