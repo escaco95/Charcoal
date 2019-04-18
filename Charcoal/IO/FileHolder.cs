@@ -19,7 +19,6 @@ namespace Charcoal.IO
         /// <summary>
         /// 해당 인스턴스가 관리할 파일의 경로 문자열입니다. 이 인스턴스의 <see cref="State"/>가 <see cref="FileHolderState.Idle"/>이 아닐 경우, <see cref="IOException"/>이 발생합니다.
         /// </summary>
-        /// <exception cref="IOException"/>
         public string FileName
         {
             get { return _filename; }

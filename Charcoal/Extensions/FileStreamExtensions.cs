@@ -60,5 +60,28 @@ namespace Charcoal.Extensions
             byte[] bytes = value.ToByteArray(encoding);
             fs.Write(bytes, 0, bytes.Length);
         }
+        /// <summary>
+        /// 파일 포인터를 <see cref="FileStream"/>의 시작 지점으로 되감습니다.
+        /// </summary>
+        /// <exception cref="IOException"/>
+        /// <exception cref="NotSupportedException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        public static void Rewind(this FileStream fs)
+        {
+            fs.Seek(0, SeekOrigin.Begin);
+        }
+        /// <summary>
+        /// 파일 내용을 완전히 비웁니다. (0KB)
+        /// </summary>
+        /// <exception cref="IOException"/>
+        /// <exception cref="NotSupportedException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        public static void Clear(this FileStream fs)
+        {
+            fs.Seek(0, SeekOrigin.Begin);
+            fs.SetLength(0);
+        }
     }
 }
