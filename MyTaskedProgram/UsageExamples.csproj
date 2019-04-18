@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiTaskingExample\MultiTaskingExample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiTaskingExample\MultiTaskingExample.Designer.cs">
+      <DependentUpon>MultiTaskingExample.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskBatchImageConverterExample\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="PythonExecutor.Designer.cs">
       <DependentUpon>PythonExecutor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MultiTaskingExample\MultiTaskingExample.resx">
+      <DependentUpon>MultiTaskingExample.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaskBatchImageConverterExample\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
