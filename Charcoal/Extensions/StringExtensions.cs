@@ -1,9 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Charcoal.Extensions
 {
+    // 단순 문자열 처리와 관련된 확장 메소드
+    public static partial class StringExtensions
+    {
+        /// <summary>
+        /// 문자열의 가장 마지막 문자를 반환합니다. 빈 문자열의 경우 <see cref="IndexOutOfRangeException"/>가 발생합니다.
+        /// </summary>
+        /// <exception cref="IndexOutOfRangeException"/>
+        public static char GetLastChar(this String str) { return str[str.Length - 1]; }
+        /// <summary>
+        /// 문자열의 가장 마지막 문자를 비교합니다. 빈 문자열의 경우 <see cref="IndexOutOfRangeException"/>가 발생합니다.
+        /// </summary>
+        /// <param name="cmp">비교할 단일 문자입니다.</param>
+        /// <exception cref="IndexOutOfRangeException"/>
+        public static bool IsLastChar(this String str,char cmp) { return str[str.Length - 1] == cmp; }
+    }
+
     // 경로 문자열과 관련된 확장 메소드
     #region[    StringExtensions.Path    ]
     public static partial class StringExtensions
