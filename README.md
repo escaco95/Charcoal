@@ -2,13 +2,13 @@
 C# library including Task(multi-threading) etc.
 
 using Charcoal.Extensions;
-  // StringExtensions
+  *StringExtensions*
     Path.GetFileName( string ) --> string.GetFileName()
-  // Int32Extensions
+  *Int32Extensions*
     bool = (int != 0) --> bool = int.ToBoolean()
-  // BooleanExtensions
+  *BooleanExtensions*
     int = (bool) ? 1 : 0 --> int = bool.ToInt()
-  // FileStreamExtensions
+  *FileStreamExtensions*
     FileStream.WriteInt32( int )
     int = FileStream.ReadInt32()
     FileStream.WriteString( string, System.Text.Encoding )
