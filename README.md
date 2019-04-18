@@ -1,41 +1,25 @@
 # Charcoal
 C# library including Task(multi-threading) etc.
 
-using Charcoal.Extensions;
+using Charcoal.Extensions;<br/>
+  *StringExtensions*<br/>
+    Path.GetFileName( string ) --> string.GetFileName()<br/>
+  *Int32Extensions*<br/>
+    bool = (int != 0) --> bool = int.ToBoolean()<br/>
+  *BooleanExtensions*<br/>
+    int = (bool) ? 1 : 0 --> int = bool.ToInt()<br/>
+  *FileStreamExtensions*<br/>
+    FileStream.WriteInt32( int )<br/>
+    int = FileStream.ReadInt32()<br/>
+    FileStream.WriteString( string, System.Text.Encoding )<br/>
 
-  *StringExtensions*
-  
-    Path.GetFileName( string ) --> string.GetFileName()
-    
-  *Int32Extensions*
-  
-    bool = (int != 0) --> bool = int.ToBoolean()
-    
-  *BooleanExtensions*
-  
-    int = (bool) ? 1 : 0 --> int = bool.ToInt()
-    
-  *FileStreamExtensions*
-  
-    FileStream.WriteInt32( int )
-    
-    int = FileStream.ReadInt32()
-    
-    FileStream.WriteString( string, System.Text.Encoding )
-    
+using Charcoal.IO;<br/>
+  class FileHolder;<br/>
 
-using Charcoal.IO;
+using Charcoal.Python;<br/>
+  class PythonExecutor;<br/>
 
-  class FileHolder;
-
-using Charcoal.Python;
-
-  class PythonExecutor;
-
-using Charcoal.Task;
-
-  class ControlTask;
-  
-  class Task;
-  
-  class TaskManager;
+using Charcoal.Task;<br/>
+  class ControlTask;<br/>
+  class Task;<br/>
+  class TaskManager;<br/>
