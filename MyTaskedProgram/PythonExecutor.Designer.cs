@@ -102,11 +102,14 @@
             this.LBOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LBOutput.BackColor = System.Drawing.Color.Black;
+            this.LBOutput.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBOutput.ForeColor = System.Drawing.SystemColors.Window;
             this.LBOutput.FormattingEnabled = true;
-            this.LBOutput.ItemHeight = 12;
+            this.LBOutput.ItemHeight = 22;
             this.LBOutput.Location = new System.Drawing.Point(12, 125);
             this.LBOutput.Name = "LBOutput";
-            this.LBOutput.Size = new System.Drawing.Size(776, 316);
+            this.LBOutput.Size = new System.Drawing.Size(776, 312);
             this.LBOutput.TabIndex = 7;
             // 
             // PBoutput
@@ -142,6 +145,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TBpy);
             this.Controls.Add(this.TBexe);
+            this.DoubleBuffered = true;
             this.Name = "PythonExecutor";
             this.Text = "PythonExecutor";
             this.ResumeLayout(false);
