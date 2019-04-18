@@ -125,7 +125,7 @@
             // 
             this.LOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LOutput.AutoSize = true;
-            this.LOutput.Location = new System.Drawing.Point(614, 93);
+            this.LOutput.Location = new System.Drawing.Point(614, 96);
             this.LOutput.Name = "LOutput";
             this.LOutput.Size = new System.Drawing.Size(21, 12);
             this.LOutput.TabIndex = 9;

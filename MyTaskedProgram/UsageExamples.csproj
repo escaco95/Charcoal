@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="TaskBatchImageConverterExample\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="TaskBatchImageConverterExample\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyTaskConvertImageFile.cs" />
-    <Compile Include="MyTaskCountFiles.cs" />
+    <Compile Include="TaskBatchImageConverterExample\MyTaskConvertImageFile.cs" />
+    <Compile Include="TaskBatchImageConverterExample\MyTaskCountFiles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PythonExecutor.cs">
@@ -62,7 +62,7 @@
     <Compile Include="PythonExecutor.Designer.cs">
       <DependentUpon>PythonExecutor.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="TaskBatchImageConverterExample\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

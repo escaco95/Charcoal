@@ -18,35 +18,37 @@ namespace MyTaskedProgram
         public PythonExecutor()
         {
             InitializeComponent();
+
+            executor.OutputDataReceivedAsync += ProcessOutputDataHandler;
+            executor.ErrorDataReceivedAsync += ProcessErrorDataHandler;
+            executor.ExitedAsync += ProcessExitHandler;
         }
 
-        Process Python = null;
+        Charcoal.Python.PythonExecutor executor = new Charcoal.Python.PythonExecutor();
 
         private void Button1_Click(object sender, EventArgs e)
         {
             TimeEvaluate.Start();
-            Process process = new Process();
-            {
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
-                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(TBpy.Text);
-                process.StartInfo.FileName = Path.Combine(Environment.SystemDirectory, "cmd.exe");
+            executor.FileName = TBexe.Text;
+            executor.Arguments = TBpy.Text;
+            executor.Start();
+        }
 
-                process.StartInfo.RedirectStandardInput = true;
+        public void ProcessOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
+        {
+            if (InvokeRequired)
+                this.Invoke(new Action(() => ParseCmdOutput(outLine.Data)));
+        }
 
-                process.OutputDataReceived += ProcessOutputDataHandler;
-                process.ErrorDataReceived += ProcessErrorDataHandler;
-
-                process.Start();
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
-
-                process.StandardInput.WriteLine(TBexe.Text + " -u " + TBpy.Text);
-            }
-            Python = process;
+        public void ProcessErrorDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
+        {
+            if (InvokeRequired)
+                this.Invoke(new Action(() => ParseCmdOutput(outLine.Data)));
+        }
+        public void ProcessExitHandler(object sendingProcess, EventArgs e)
+        {
+            if (InvokeRequired)
+                this.Invoke(new Action(() => LBOutput.Items.Add("기계학습 종료")));
         }
 
         char[] OutputTokenSeperator = new char[]{' '};
@@ -65,6 +67,7 @@ namespace MyTaskedProgram
             {
                 TimeEvaluate.Stop();
                 LBOutput.Items.Add("기계학습 종료");
+                return;
             }
             if (s.Length == 0)
                 return;
@@ -114,21 +117,9 @@ namespace MyTaskedProgram
             }
         }
 
-        public void ProcessOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
-        {
-            if (InvokeRequired)
-                this.Invoke(new Action(() => ParseCmdOutput(outLine.Data)));
-        }
-
-        public void ProcessErrorDataHandler(object sendingProcess, DataReceivedEventArgs outLine)
-        {
-            if (InvokeRequired)
-                this.Invoke(new Action(() => ParseCmdOutput(outLine.Data)));
-        }
-
         private void Button2_Click(object sender, EventArgs e)
         {
-            Python.Kill();
+            executor.Kill();
         }
     }
 }

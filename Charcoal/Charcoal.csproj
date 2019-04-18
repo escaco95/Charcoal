@@ -44,6 +44,7 @@
     <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IO\FileHolder.cs" />
+    <Compile Include="Python\PythonExecutor.cs" />
     <Compile Include="Task\ControlTask.cs" />
     <Compile Include="Task\Task.cs" />
     <Compile Include="Task\TaskManager.cs" />
