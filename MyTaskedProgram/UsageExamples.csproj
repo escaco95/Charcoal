@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiTaskingExample\DownloadBackgroundWork.cs" />
     <Compile Include="MultiTaskingExample\MultiTaskingExample.cs">
       <SubType>Form</SubType>
     </Compile>
