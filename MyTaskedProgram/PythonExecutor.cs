@@ -32,6 +32,8 @@ namespace MyTaskedProgram
             executor.FileName = TBexe.Text;
             executor.Arguments = TBpy.Text;
             executor.Start();
+            button1.Enabled = false;
+            button2.Enabled = true;
         }
 
         public void ProcessOutputDataHandler(object sendingProcess, DataReceivedEventArgs outLine)

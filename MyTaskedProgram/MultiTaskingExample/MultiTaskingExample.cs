@@ -18,41 +18,19 @@ namespace MyTaskedProgram.MultiTaskingExample
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            this.backgroundWorker1.RunWorkerAsync();
-        }
-
-        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            while (!worker.CancellationPending) ;
-            e.Cancel = true;
-        }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Cancelled)
-                MessageBox.Show("Cancelled");
-            else
-                MessageBox.Show("WHAT?");
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            this.backgroundWorker1.CancelAsync();
-        }
+        DownloadBackgroundWork _worker = new DownloadBackgroundWork(true,false);
 
         private void Button3_Click(object sender, EventArgs e)
         {
             this.button3.Enabled = false;
             this.progressBar1.Value = 0;
-            this.backgroundWorker1.RunWorkerAsync();
-            while (this.backgroundWorker1.IsBusy)
+            this._worker.RunAsync();
+            while (this._worker.IsBusy)
             {
-                progressBar1.Increment(1);
+                progressBar1.Value = _worker.Progress;
                 Application.DoEvents();
             }
+            progressBar1.Value = _worker.Progress;
             this.button3.Enabled = true;
         }
     }

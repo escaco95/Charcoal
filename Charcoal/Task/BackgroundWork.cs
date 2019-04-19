@@ -14,11 +14,11 @@ namespace Charcoal.Task
         /// </summary>
         /// <param name="supportsCancellation">비동기 작업 취소를 지원합니다.</param>
         /// <param name="reportsProgress">비동기 작업의 진행률 업데이트를 보고할 수 있습니다.</param>
-        public BackgroundWork(bool supportsCancellation = false, bool reportsProgress = false)
+        public BackgroundWork(bool supportsCancellation, bool reportsProgress)
         {
             SupportsCancellation = supportsCancellation;
             ReportsProgress = reportsProgress;
-            _worker.DoWork += Main;
+            _worker.DoWork += OnWorkerDoWork;
             _worker.RunWorkerCompleted += OnWorkerCompleted;
         }
         /// <summary>
@@ -30,7 +30,11 @@ namespace Charcoal.Task
         /// <see cref="BackgroundWork"/> 가 비동기 작업을 실행 중인지 여부를 반환합니다.
         /// </summary>
         public bool IsBusy { get { return _worker.IsBusy; } }
-        protected abstract void Main(object sender, DoWorkEventArgs e);
+        private void OnWorkerDoWork(object sender, DoWorkEventArgs e)
+        {
+            DoWork(sender, e);
+        }
+        protected abstract void DoWork(object sender, DoWorkEventArgs e);
 
         /// <summary>
         /// 백그라운드 작업을 이상 없이 완료했을 때 발생합니다. 예외 발생, 또는 작업 취소에 관한 이벤트는 <see cref="Cancelled"/> 를 참고하세요.
