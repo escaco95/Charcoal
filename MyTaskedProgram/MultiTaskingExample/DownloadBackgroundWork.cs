@@ -16,7 +16,7 @@ namespace MyTaskedProgram.MultiTaskingExample
         protected override void DoWork(object sender, DoWorkEventArgs e)
         {
             _progress = 0;
-            for(int i = 0; i < 100000000; i++)
+            for(int i = 0; i < 1000000000; i++)
             {
                 _progress = i;
             }

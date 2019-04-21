@@ -16,8 +16,8 @@ namespace MyTaskedProgram
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PythonExecutor());
-            //Application.Run(new MultiTaskingExample.MultiTaskingExample());
+            //Application.Run(new PythonExecutor());
+            Application.Run(new MultiTaskingExample.MultiTaskingExample());
         }
     }
 }
