@@ -8,9 +8,8 @@ using Charcoal.Task;
 
 namespace MyTaskedProgram.MultiTaskingExample
 {
-    class JobDownload
+    class JobDownload : Job
     {
         public volatile int Progress = 0;
-        public volatile bool Done = false;
     }
 }

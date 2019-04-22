@@ -51,39 +51,39 @@
             this.progressBar1.Location = new System.Drawing.Point(13, 39);
             this.progressBar1.Maximum = 1000000000;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(775, 23);
+            this.progressBar1.Size = new System.Drawing.Size(775, 10);
             this.progressBar1.TabIndex = 3;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(13, 68);
+            this.progressBar2.Location = new System.Drawing.Point(13, 55);
             this.progressBar2.Maximum = 1000000000;
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(775, 23);
+            this.progressBar2.Size = new System.Drawing.Size(775, 10);
             this.progressBar2.TabIndex = 4;
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(13, 97);
+            this.progressBar3.Location = new System.Drawing.Point(13, 71);
             this.progressBar3.Maximum = 1000000000;
             this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(775, 23);
+            this.progressBar3.Size = new System.Drawing.Size(775, 10);
             this.progressBar3.TabIndex = 5;
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(13, 126);
+            this.progressBar4.Location = new System.Drawing.Point(13, 87);
             this.progressBar4.Maximum = 1000000000;
             this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(775, 23);
+            this.progressBar4.Size = new System.Drawing.Size(775, 10);
             this.progressBar4.TabIndex = 6;
             // 
             // progressBar5
             // 
-            this.progressBar5.Location = new System.Drawing.Point(13, 155);
+            this.progressBar5.Location = new System.Drawing.Point(13, 103);
             this.progressBar5.Maximum = 1000000000;
             this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(775, 23);
+            this.progressBar5.Size = new System.Drawing.Size(775, 10);
             this.progressBar5.TabIndex = 7;
             // 
             // MultiTaskingExample

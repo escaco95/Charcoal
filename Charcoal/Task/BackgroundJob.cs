@@ -25,5 +25,10 @@ namespace Charcoal.Task
         /// 이 인스턴스가 수행할 작업의 정보를 가진 클래스입니다.
         /// </summary>
         public JobInfoClass JobInfo { get { return _info; } set { _info = value; } }
+        /// <summary>
+        /// System.ComponentModel.BackgroundWorker.ProgressChanged 이벤트를 발생시킵니다.
+        /// </summary>
+        /// <exception cref="InvalidOperationException"/>
+        public void ReportProgress() { base.ReportProgress(0); }
     }
 }

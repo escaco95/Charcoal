@@ -25,6 +25,7 @@ namespace MyTaskedProgram.MultiTaskingExample
         }
         void StartAsync(ProgressBar bar)
         {
+            //작업 인터페이스 초기화
             bar.Value = 0;
 
             //작업에 대한 정보 job 초기화
@@ -35,15 +36,12 @@ namespace MyTaskedProgram.MultiTaskingExample
             //작업에 대한 정보 job 을 기반으로, 작업의 '일꾼' 생성
             BackgroundJob<JobDownload> worker = new BackgroundJob<JobDownload>(job);
 
-            //무명 메소드를 사용하는 방법을 통해 감독관이 해야 할 일을 정의
+            //무명 메소드를 사용하는 방법을 통해 작업 감독관이 해야 할 일을 정의
             watcher.DoWork += (senderWorker, eWorker) =>
             {
                 JobDownload Job = watcher.JobInfo;
-                while (!Job.Done)
-                {
-                    Thread.Sleep(2000);
-                    watcher.ReportProgress(0);
-                }
+                while (Job.Watch(100))
+                    watcher.ReportProgress();
             };
             watcher.ProgressChanged += (senderWorker, eWorker) =>
             {
@@ -52,12 +50,12 @@ namespace MyTaskedProgram.MultiTaskingExample
             watcher.RunWorkerCompleted += (senderWorker, eWorker) =>
             {
                 bar.Value = bar.Maximum;
-                //this.button3.Text = "다운로드";
-                //this.button3.Enabled = true;
+                this.button3.Text = "다운로드";
+                this.button3.Enabled = true;
                 worker.Dispose();
                 watcher.Dispose();
             };
-            //무명 메소드를 사용하는 방법을 통해 일꾼이 해야 할 일을 정의
+            //무명 메소드를 사용하는 방법을 통해 작업 일꾼이 해야 할 일을 정의
             worker.DoWork += (senderWorker, eWorker) =>
             {
                 JobDownload Job = worker.JobInfo;
@@ -66,8 +64,7 @@ namespace MyTaskedProgram.MultiTaskingExample
             };
             worker.RunWorkerCompleted += (senderWorker, eWorker) =>
             {
-                JobDownload Job = worker.JobInfo;
-                Job.Done = true;
+                worker.JobInfo.Finish();
             };
 
             //감독관이 감독 작업 시작
