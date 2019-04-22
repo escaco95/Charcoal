@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using Charcoal.Task;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace MyTaskedProgram.MultiTaskingExample
 {
@@ -18,20 +12,68 @@ namespace MyTaskedProgram.MultiTaskingExample
             InitializeComponent();
         }
 
-        DownloadBackgroundWork _worker = new DownloadBackgroundWork(true,false);
-
         private void Button3_Click(object sender, EventArgs e)
         {
+            //인터페이스 초기화
             this.button3.Enabled = false;
-            this.progressBar1.Value = 0;
-            this._worker.RunAsync();
-            while (this._worker.IsBusy)
+            this.button3.Text = "다운로드 중...";
+            StartAsync(this.progressBar1);
+            StartAsync(this.progressBar2);
+            StartAsync(this.progressBar3);
+            StartAsync(this.progressBar4);
+            StartAsync(this.progressBar5);
+        }
+        void StartAsync(ProgressBar bar)
+        {
+            bar.Value = 0;
+
+            //작업에 대한 정보 job 초기화
+            JobDownload job = new JobDownload();
+
+            //작업에 대한 정보 job 을 기반으로, 작업의 '감독관' 생성
+            BackgroundJob<JobDownload> watcher = new BackgroundJob<JobDownload>(job, false, true);
+            //작업에 대한 정보 job 을 기반으로, 작업의 '일꾼' 생성
+            BackgroundJob<JobDownload> worker = new BackgroundJob<JobDownload>(job);
+
+            //무명 메소드를 사용하는 방법을 통해 감독관이 해야 할 일을 정의
+            watcher.DoWork += (senderWorker, eWorker) =>
             {
-                progressBar1.Value = _worker.Progress;
-                Application.DoEvents();
-            }
-            progressBar1.Value = _worker.Progress;
-            this.button3.Enabled = true;
+                JobDownload Job = watcher.JobInfo;
+                while (!Job.Done)
+                {
+                    Thread.Sleep(2000);
+                    watcher.ReportProgress(0);
+                }
+            };
+            watcher.ProgressChanged += (senderWorker, eWorker) =>
+            {
+                bar.Value = watcher.JobInfo.Progress;
+            };
+            watcher.RunWorkerCompleted += (senderWorker, eWorker) =>
+            {
+                bar.Value = bar.Maximum;
+                //this.button3.Text = "다운로드";
+                //this.button3.Enabled = true;
+                worker.Dispose();
+                watcher.Dispose();
+            };
+            //무명 메소드를 사용하는 방법을 통해 일꾼이 해야 할 일을 정의
+            worker.DoWork += (senderWorker, eWorker) =>
+            {
+                JobDownload Job = worker.JobInfo;
+                for (int i = 0; i < 1000000000; i++)
+                    Job.Progress = i;
+            };
+            worker.RunWorkerCompleted += (senderWorker, eWorker) =>
+            {
+                JobDownload Job = worker.JobInfo;
+                Job.Done = true;
+            };
+
+            //감독관이 감독 작업 시작
+            watcher.RunWorkerAsync();
+            //일꾼이 노가다 작업 시작
+            worker.RunWorkerAsync();
         }
     }
 }

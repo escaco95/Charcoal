@@ -45,7 +45,9 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IO\FileHolder.cs" />
     <Compile Include="Python\PythonExecutor.cs" />
-    <Compile Include="Task\BackgroundWork.cs" />
+    <Compile Include="Task\BackgroundJob.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Task\ControlTask.cs" />
     <Compile Include="Task\Task.cs" />
     <Compile Include="Task\TaskManager.cs" />
