@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -55,6 +54,26 @@ namespace Charcoal.Extensions
         /// 문자열 경로가 디스크에 있는 기존 디렉터리를 참조하는지를 확인합니다.
         /// </summary>
         public static Boolean DirectoryExists(this String str) { return Directory.Exists(str); }
+        /// <summary>
+        /// 문자열 경로가 지정하고 있는 디렉터리에 있는 하위 디렉터리의 이름(경로 포함)을 반환합니다.
+        /// </summary>
+        /// <exception cref="UnauthorizedAccessException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="PathTooLongException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="DirectoryNotFoundException"/>
+        public static String[] GetDirectories(this String str) { return Directory.GetDirectories(str); }
+        /// <summary>
+        /// 문자열 경로가 지정하고 있는 디렉터리에 있는 하위 파일의 이름(경로 포함)을 반환합니다.
+        /// </summary>
+        /// <exception cref="UnauthorizedAccessException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="PathTooLongException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="DirectoryNotFoundException"/>
+        public static String[] GetFiles(this String str) { return Directory.GetFiles(str); }
     }
     #endregion
 
