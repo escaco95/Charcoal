@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
 
@@ -17,7 +18,24 @@ namespace Charcoal.Extensions
         /// </summary>
         /// <param name="cmp">비교할 단일 문자입니다.</param>
         /// <exception cref="IndexOutOfRangeException"/>
-        public static bool IsLastChar(this String str,char cmp) { return str[str.Length - 1] == cmp; }
+        public static bool IsLastChar(this String str, char cmp) { return str[str.Length - 1] == cmp; }
+        /// <summary>
+        /// 문자열의 물리적 크기를 계산합니다.
+        /// </summary>
+        /// <param name="str">크기를 계산할 문자열입니다.</param>
+        /// <param name="font">계산의 기준이 될 폰트 정보입니다.</param>
+        /// <exception cref="ArgumentException"/>
+        public static SizeF Measure(this String str, Font font = null)
+        {
+            if (font == null)
+                font = SystemFonts.DefaultFont;
+            SizeF result;
+            using (var g = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                result = g.MeasureString(str, font);
+            }
+            return result;
+        }
     }
 
     // 경로 문자열과 관련된 확장 메소드
