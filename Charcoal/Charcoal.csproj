@@ -8,10 +8,11 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Charcoal</RootNamespace>
     <AssemblyName>Charcoal</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +43,7 @@
     <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="Extensions\FileStreamExtensions.cs" />
     <Compile Include="Extensions\Int32Extensions.cs" />
+    <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IO\FileHolder.cs" />
     <Compile Include="Python\PythonExecutor.cs" />
@@ -56,7 +58,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

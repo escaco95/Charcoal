@@ -25,14 +25,33 @@ namespace Charcoal.Extensions
         /// <param name="str">크기를 계산할 문자열입니다.</param>
         /// <param name="font">계산의 기준이 될 폰트 정보입니다.</param>
         /// <exception cref="ArgumentException"/>
-        public static SizeF Measure(this String str, Font font = null)
+        public static SizeF MeasureSize(this String str, Font font = null)
         {
             if (font == null)
                 font = SystemFonts.DefaultFont;
             SizeF result;
             using (var g = Graphics.FromHwnd(IntPtr.Zero))
             {
-                result = g.MeasureString(str, font);
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                result = g.MeasureString(str, font, int.MaxValue, StringFormat.GenericTypographic);
+            }
+            return result;
+        }
+        /// <summary>
+        /// 문자열의 물리적 크기를 계산합니다.
+        /// </summary>
+        /// <param name="str">크기를 계산할 문자열입니다.</param>
+        /// <param name="font">계산의 기준이 될 폰트 정보입니다.</param>
+        /// <exception cref="ArgumentException"/>
+        public static RectangleF MeasureRectangle(this String str, Font font = null)
+        {
+            if (font == null)
+                font = SystemFonts.DefaultFont;
+            RectangleF result;
+            using (var g = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                result = new RectangleF(new PointF(0, 0), g.MeasureString(str, font, int.MaxValue, StringFormat.GenericTypographic));
             }
             return result;
         }
